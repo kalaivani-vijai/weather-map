@@ -1,0 +1,37 @@
+<div class="weather-details">
+  <h1>Weather Details for {{ cityName }}</h1>
+
+  <div class="current-weather">
+    <h2>Current Weather</h2>
+    <p><strong>Temperature:</strong> {{ roundWeatherTemp(currentWeather.main.temp) }}°C</p>
+    <p><strong>Weather:</strong> {{ currentWeather.weather[0].description }}</p>
+    <p><strong>Humidity:</strong> {{ currentWeather.main.humidity }}%</p>
+    <p><strong>Wind Speed:</strong> {{ currentWeather.wind.speed }} m/s</p>
+    <img
+      src="http://openweathermap.org/img/wn/{{
+        currentWeather.weather[0].icon
+      }}.png"
+      alt="Weather Icon"
+      class="weather-icon"
+    />
+  </div>
+
+  <div class="weather-forecast">
+    <h2>Forecast</h2>
+    <div class="forecast-cards">
+      <div *ngFor="let forecast of weatherForecast" class="forecast-card">
+        <p>
+          <strong>{{ forecast.dt_txt | date : "short" }}</strong>
+        </p>
+        <p><strong>Temperature:</strong> {{ roundWeatherTemp(forecast.main.temp) }}°C</p>
+        <p><strong>Weather:</strong> {{ forecast.weather[0].description }}</p>
+        <img
+        src="http://openweathermap.org/img/wn/{{
+            forecast.weather[0].icon
+          }}.png"
+          alt="Weather Icon"
+        />
+      </div>
+    </div>
+  </div>
+</div>

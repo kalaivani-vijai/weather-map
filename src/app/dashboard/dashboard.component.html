@@ -1,0 +1,49 @@
+<div class="dashboard">
+  <h1>Weather Dashboard</h1>
+  <div class="add-location">
+    <input
+      type="text"
+      id="cityName"
+      name="cityName"
+      [(ngModel)]="newLocation"
+      placeholder="Weather in your city"
+    />
+    <button (click)="addNewLocation(newLocation)">Add Location</button>
+  </div>
+<div class="empty" *ngIf="weatherData.length==0">
+    Please add new location !!
+</div>
+  <div class="weather-cards-container" *ngIf="weatherData.length>0">
+    <div *ngFor="let weather of weatherData" class="weather-card">
+      <div class="remove">
+        <h1>Weather Summary</h1>
+        <img
+          class="delete-icon"
+          src="./assets/images/delete-icon.png"
+          alt="delete icon"
+          (click)="deleteWeatherInfo(weather)"
+          title="Delete"
+        />
+      </div>
+      <p style="padding: 30px">{{ weather.name }}</p>
+      <div class="temperature">
+        <p *ngIf="isTempShownInCelsius">Temperature: {{ roundWeatherTemp(weather.main.temp) }}°C</p>
+        <p *ngIf="!isTempShownInCelsius">Temperature: {{ convertToFahrenheit(weather.main.temp) }}°F</p>
+      </div>
+      <button (click)="toggleTemperatureUnit()">
+      Celsius
+    </button>
+    <span> | </span>
+    <button (click)="convertToFahrenheit(weather.main.temp)">
+      Fahrenheit
+    </button>
+      <img
+        src="http://openweathermap.org/img/wn/{{ weather.weather[0].icon }}.png"
+        alt="Weather Icon"
+        class="weather-icon"
+      />
+      <p>{{ weather.weather[0].description }}</p>
+      <button (click)="goToWeatherDetails(weather.name)" >View Details</button>
+    </div>
+  </div>
+</div>

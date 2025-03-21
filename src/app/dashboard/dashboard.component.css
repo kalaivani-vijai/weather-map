@@ -1,0 +1,53 @@
+.dashboard {
+  text-align: center;
+  padding: 20px;
+}
+
+.add-location {
+  margin-bottom: 20px;
+}
+.weather-cards-container {
+  display: flex;
+  gap: 20px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.weather-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  text-align: center;
+  position: relative;
+}
+
+.weather-card h1 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.weather-card p {
+  font-size: 1.2em;
+  color: #555;
+}
+
+.remove {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.delete-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  object-fit: contain;
+}
